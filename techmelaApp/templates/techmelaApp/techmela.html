@@ -140,8 +140,6 @@
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-8" style="text-align: center;">
-                                {#                                <form action="{% url 'markScore' %}" method="post">#}
-                                {#                                    {% csrf_token %}#}
                                 <div class="form-group c ">
                                     <label for="inputScore"
                                            style="margin-bottom: 1vh;margin-top: 1vh;font-size: 15px;text-align: center;">Score
@@ -149,7 +147,7 @@
                                     <input style="text-align: center; padding: 10px;" type="number"
                                            class="form-control" id="inputScore" name="score"
                                            aria-describedby="emailHelp"
-                                           placeholder="Enter Score out of 10" required>
+                                           placeholder="Enter Score out of 10" max="10" required>
                                     <input style="text-align: center; padding: 10px;display: none;" type="text"
                                            class="form-control" id="inputPrjID" name="prjID"
                                            aria-describedby="emailHelp"
@@ -164,7 +162,6 @@
                                 <div id="scoreAlreadySubmittedMsg" style="color: red;display: none;">Scores already
                                     submitted.
                                 </div>
-                                {#                                </form>#}
                             </div>
                             <div class="col-md-2"></div>
                         </div>
@@ -183,7 +180,7 @@
     <div class="mainHeading" style="text-align: center; ">
         <img class="techmelaTitleImg" src="{% static 'techmelaApp/img/techmelaTitle.png' %}" alt="techmela-title"/>
     </div>
-    <h5 class="mainSubheading" style="text-align: center;">Aarohan presents TechMela</h5>
+    <h5 class="mainSubheading" style="text-align: center;">Aarohan 2021 presents TechMela</h5>
     {% if user.is_authenticated %}
         <div style="text-align: center;margin-bottom: 2%; ">
             <div style="color: dodgerblue;">Welcome!! {{ user.username }}</div>
@@ -238,7 +235,7 @@
                             {% for project in allProjects %}
                                 {% if project.category == '1' %}
                                     <div class="card"
-                                         style="background-image: url(http://127.0.0.1:8000/media/{{ project.image }});background-size: cover;">
+                                         style="background-image: url(https://techmela.arhn.co.in/media/{{ project.image }});background-size: cover;">
                                         <div class="content">
                                             <h2 class="title">{{ project.title }}</h2>
                                             <p class="copy">{{ project.shortDescription }}</p>
@@ -247,8 +244,7 @@
                                             </button>
 
                                             {% if user.is_authenticated %}
-{#                                                <form action="{% url 'like' %}" method="post">#}
-{#                                                    {% csrf_token %}#}
+
                                                     <input style="text-align: center; padding: 10px;display: none;"
                                                            type="text"
                                                            class="form-control" id="inputPrjIDLike" name="prjIDLike"
@@ -261,36 +257,7 @@
                                                         <i id="likeButton"
                                                            class="fas fa-heart"></i><span
                                                             id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
-                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-{#                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"#}
-{#                                                            class="btn btn-danger"#}
-{#                                                            style="display: none;">Like#}
-{#                                                    </button>#}
-                                                    {#                                                    <button class="like-button">#}
-                                                    {#                                                        <div class="like-wrapper">#}
-                                                    {#                                                            <div class="ripple"></div>#}
-                                                    {#                                                            <svg class="heart" width="24" height="24"#}
-                                                    {#                                                                 viewBox="0 0 24 24">#}
-                                                    {#                                                                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>#}
-                                                    {#                                                            </svg>#}
-                                                    {#                                                            <div class="particles" style="--total-particles: 6">#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 1; --color: #7642F0"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 2; --color: #AFD27F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 3; --color: #DE8F4F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 4; --color: #D0516B"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 5; --color: #5686F2"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 6; --color: #D53EF3"></div>#}
-                                                    {#                                                            </div>#}
-                                                    {#                                                            <span class="no">{{ project.likes }}</span>#}
-                                                    {#                                                        </div>#}
-                                                    {#                                                    </button>#}
-{#                                                </form>#}
+
                                             {% endif %}
 
                                         </div>
@@ -319,7 +286,7 @@
                             {% for project in allProjects %}
                                 {% if project.category == '2' %}
                                     <div class="card"
-                                         style="background-image: url(http://127.0.0.1:8000/media/{{ project.image }});background-size: cover;">
+                                         style="background-image: url(https://techmela.arhn.co.in/media/{{ project.image }});background-size: cover;">
                                         <div class="content">
                                             <h2 class="title">{{ project.title }}</h2>
                                             <p class="copy">{{ project.shortDescription }}</p>
@@ -328,8 +295,7 @@
                                             </button>
 
                                             {% if user.is_authenticated %}
-                                                <form action="{% url 'like' %}" method="post">
-                                                    {% csrf_token %}
+
                                                     <input style="text-align: center; padding: 10px;display: none;"
                                                            type="text"
                                                            class="form-control" id="inputPrjIDLike" name="prjIDLike"
@@ -338,39 +304,11 @@
                                                            placeholder="project ID" required>
 
                                                     <a
-                                                            onclick="document.getElementById('likeButtonSubmit{{ project.id }}').click()">
+                                                            onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                                         <i id="likeButton"
-                                                           class="fas fa-heart"></i>{{ project.likes }}</a>
-                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"
-                                                            class="btn btn-danger"
-                                                            style="display: none;">Like
-                                                    </button>
-                                                    {#                                                    <button class="like-button">#}
-                                                    {#                                                        <div class="like-wrapper">#}
-                                                    {#                                                            <div class="ripple"></div>#}
-                                                    {#                                                            <svg class="heart" width="24" height="24"#}
-                                                    {#                                                                 viewBox="0 0 24 24">#}
-                                                    {#                                                                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>#}
-                                                    {#                                                            </svg>#}
-                                                    {#                                                            <div class="particles" style="--total-particles: 6">#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 1; --color: #7642F0"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 2; --color: #AFD27F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 3; --color: #DE8F4F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 4; --color: #D0516B"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 5; --color: #5686F2"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 6; --color: #D53EF3"></div>#}
-                                                    {#                                                            </div>#}
-                                                    {#                                                            <span class="no">{{ project.likes }}</span>#}
-                                                    {#                                                        </div>#}
-                                                    {#                                                    </button>#}
-                                                </form>
+                                                           class="fas fa-heart"></i><span
+                                                            id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
+
                                             {% endif %}
 
                                         </div>
@@ -398,7 +336,7 @@
                             {% for project in allProjects %}
                                 {% if project.category == '3' %}
                                     <div class="card"
-                                         style="background-image: url(http://127.0.0.1:8000/media/{{ project.image }});background-size: cover;">
+                                         style="background-image: url(https://techmela.arhn.co.in/media/{{ project.image }});background-size: cover;">
                                         <div class="content">
                                             <h2 class="title">{{ project.title }}</h2>
                                             <p class="copy">{{ project.shortDescription }}</p>
@@ -407,8 +345,7 @@
                                             </button>
 
                                             {% if user.is_authenticated %}
-                                                <form action="{% url 'like' %}" method="post">
-                                                    {% csrf_token %}
+
                                                     <input style="text-align: center; padding: 10px;display: none;"
                                                            type="text"
                                                            class="form-control" id="inputPrjIDLike" name="prjIDLike"
@@ -417,39 +354,11 @@
                                                            placeholder="project ID" required>
 
                                                     <a
-                                                            onclick="document.getElementById('likeButtonSubmit{{ project.id }}').click()">
+                                                            onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                                         <i id="likeButton"
-                                                           class="fas fa-heart"></i>{{ project.likes }}</a>
-                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"
-                                                            class="btn btn-danger"
-                                                            style="display: none;">Like
-                                                    </button>
-                                                    {#                                                    <button class="like-button">#}
-                                                    {#                                                        <div class="like-wrapper">#}
-                                                    {#                                                            <div class="ripple"></div>#}
-                                                    {#                                                            <svg class="heart" width="24" height="24"#}
-                                                    {#                                                                 viewBox="0 0 24 24">#}
-                                                    {#                                                                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>#}
-                                                    {#                                                            </svg>#}
-                                                    {#                                                            <div class="particles" style="--total-particles: 6">#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 1; --color: #7642F0"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 2; --color: #AFD27F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 3; --color: #DE8F4F"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 4; --color: #D0516B"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 5; --color: #5686F2"></div>#}
-                                                    {#                                                                <div class="particle"#}
-                                                    {#                                                                     style="--i: 6; --color: #D53EF3"></div>#}
-                                                    {#                                                            </div>#}
-                                                    {#                                                            <span class="no">{{ project.likes }}</span>#}
-                                                    {#                                                        </div>#}
-                                                    {#                                                    </button>#}
-                                                </form>
+                                                           class="fas fa-heart"></i><span
+                                                            id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
+
                                             {% endif %}
 
                                         </div>
@@ -466,7 +375,24 @@
     </div>
 </div>
 <div class="container-fluid">
-    <div class="footerInfo">Made with love by WDCT ❤️</div>
+    <div class="footerInfo">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <a href="https://ccanitd.in">
+                <img style="height: 70px; width: 70px;" src="{% static 'techmelaApp/img/NEW-CCA-Logo_Colored.png' %}" alt="cca-logo" />
+                    </a>
+            </div>
+            <div class="col-md-1">
+                <a href="https://ccanitd.in">
+                <img style="height: 70px; width: 70px;" src="{% static 'techmelaApp/img/WDCT_logo_white.png' %}" alt="cca-logo" />
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div style="margin-top: 2%;">Made with love by WDCT, CCA <i style="color: red;" class="fas fa-heart"></i></div>
+            </div>
+        </div>
+        ️</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
