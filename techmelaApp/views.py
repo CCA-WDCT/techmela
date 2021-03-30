@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
+import json
 
 from .models import Project, CustomUser, ProjectLike, ProjectScore
 
@@ -58,17 +60,27 @@ def logOut(request):
 @login_required(login_url='/login')
 def markScore(request):
     if request.method == 'POST':
-        score = request.POST.get('score')
-        prjID = request.POST.get('prjID')
+        receivedData = json.loads(request.body)
+        score = receivedData['score']
+        prjID = receivedData['prjID']
+        # score = request.POST.get('score')
+        # prjID = request.POST.get('prjID')
+        data = {'isSuccess': True, 'alreadySubmitted': False}
         try:
             user = CustomUser.objects.get(username=request.user)
             if user.is_judge:
                 try:
                     project = Project.objects.get(id=prjID)
+                    if ProjectScore.objects.filter(project=project, judgedBy=user).exists():
+                        data['alreadySubmitted'] = True
+                        return JsonResponse(data)
                     projectScore = ProjectScore(project=project,score= score, judgedBy=user)
                     projectScore.save()
+                    return JsonResponse(data)
                 except:
                     print("ERROR in markScore()")
+                    data['isSuccess']=False
+                    return JsonResponse(data)
         except:
             pass
         pass
@@ -79,19 +91,27 @@ def markScore(request):
 @login_required(login_url='/login')
 def handleLikes(request):
     if request.method == 'POST':
-        prjID = request.POST.get('prjIDLike')
+        receivedData = json.loads(request.body)
+        prjID = receivedData['prjID']
+        # prjID = request.POST.get('prjIDLike')
+        data = {'isSuccess': True, 'isLiked': True}
         try:
             project = Project.objects.get(id=prjID)
             likes = ProjectLike.objects.filter(project=project, likedBy=request.user)
             if likes.exists():
                 project.likes-=1
                 likes.delete()
+                data['isLiked'] = False
             else:
                 like = ProjectLike(project= project, likedBy=request.user)
                 project.likes += 1
                 like.save()
             project.save()
+            return JsonResponse(data)
         except:
             print("ERROR in handleLikes()")
+            data['isSuccess'] = False
+            return JsonResponse(data)
+
 
     return redirect('home')

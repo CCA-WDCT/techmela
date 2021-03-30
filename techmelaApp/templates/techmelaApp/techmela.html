@@ -104,7 +104,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title container-fluid modalPrjTitle" id="exampleModalLabel"
+                    <h5 class="modal-title container-fluid modalPrjTitle" id="exampleModalLabel2"
                         style="text-align: center;font-weight: bold; font-size: 20px;">Give Score</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -114,22 +114,25 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
                                 <div class="scoreCriteria">
-                                    Scoring Criteria:
+                                    Judging Criteria:
                                 </div>
                                 <div class="scorePoints">
-                                    1. point 1
+                                    1. Presentation
                                 </div>
                                 <div class="scorePoints">
-                                    2. point 2
+                                    2. Creativity
                                 </div>
                                 <div class="scorePoints">
-                                    3. point 3
+                                    3. Execution
                                 </div>
                                 <div class="scorePoints">
-                                    4. point 4
+                                    4. Design and Methodology
                                 </div>
                                 <div class="scorePoints">
-                                    5. point 5
+                                    5. Social Benefits of project
+                                </div>
+                                <div class="scorePoints">
+                                    6. Marketing possibility
                                 </div>
                             </div>
                             <div class="col-md-2"></div>
@@ -137,25 +140,31 @@
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-8" style="text-align: center;">
-                                <form action="{% url 'markScore' %}" method="post">
-                                    {% csrf_token %}
-                                    <div class="form-group c ">
-                                        <label for="inputScore"
-                                               style="margin-bottom: 1vh;margin-top: 1vh;font-size: 15px;text-align: center;">Score
-                                            out of 10</label>
-                                        <input style="text-align: center; padding: 10px;" type="number"
-                                               class="form-control" id="inputScore" name="score"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Enter Score out of 10" required>
-                                        <input style="text-align: center; padding: 10px;display: none;" type="text"
-                                               class="form-control" id="inputPrjID" name="prjID"
-                                               aria-describedby="emailHelp"
-                                               placeholder="project ID" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-danger"
-                                            style="background-color: #F7413E;margin-bottom: 3vh;">Submit Score
-                                    </button>
-                                </form>
+                                {#                                <form action="{% url 'markScore' %}" method="post">#}
+                                {#                                    {% csrf_token %}#}
+                                <div class="form-group c ">
+                                    <label for="inputScore"
+                                           style="margin-bottom: 1vh;margin-top: 1vh;font-size: 15px;text-align: center;">Score
+                                        out of 10</label>
+                                    <input style="text-align: center; padding: 10px;" type="number"
+                                           class="form-control" id="inputScore" name="score"
+                                           aria-describedby="emailHelp"
+                                           placeholder="Enter Score out of 10" required>
+                                    <input style="text-align: center; padding: 10px;display: none;" type="text"
+                                           class="form-control" id="inputPrjID" name="prjID"
+                                           aria-describedby="emailHelp"
+                                           placeholder="project ID" required>
+                                </div>
+                                <button onclick="markProjectScores()" class="btn btn-danger"
+                                        style="background-color: #F7413E;margin-bottom: 3vh;">Submit Score
+                                </button>
+                                <div id="scoreSubmitSuccessMsg" style="color: dodgerblue;display: none;">Scores
+                                    submitted successfully.
+                                </div>
+                                <div id="scoreAlreadySubmittedMsg" style="color: red;display: none;">Scores already
+                                    submitted.
+                                </div>
+                                {#                                </form>#}
                             </div>
                             <div class="col-md-2"></div>
                         </div>
@@ -238,8 +247,8 @@
                                             </button>
 
                                             {% if user.is_authenticated %}
-                                                <form action="{% url 'like' %}" method="post">
-                                                    {% csrf_token %}
+{#                                                <form action="{% url 'like' %}" method="post">#}
+{#                                                    {% csrf_token %}#}
                                                     <input style="text-align: center; padding: 10px;display: none;"
                                                            type="text"
                                                            class="form-control" id="inputPrjIDLike" name="prjIDLike"
@@ -248,12 +257,15 @@
                                                            placeholder="project ID" required>
 
                                                     <a
-                                                       onclick="document.getElementById('likeButtonSubmit').click()"> <i id="likeButton"
-                                                            class="fas fa-heart"></i>{{ project.likes }}</a>
-{#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-                                                    <button id="likeButtonSubmit" type="submit" class="btn btn-danger"
-                                                            style="display: none;">Like
-                                                    </button>
+                                                            onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
+                                                        <i id="likeButton"
+                                                           class="fas fa-heart"></i><span
+                                                            id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
+                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
+{#                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"#}
+{#                                                            class="btn btn-danger"#}
+{#                                                            style="display: none;">Like#}
+{#                                                    </button>#}
                                                     {#                                                    <button class="like-button">#}
                                                     {#                                                        <div class="like-wrapper">#}
                                                     {#                                                            <div class="ripple"></div>#}
@@ -278,7 +290,7 @@
                                                     {#                                                            <span class="no">{{ project.likes }}</span>#}
                                                     {#                                                        </div>#}
                                                     {#                                                    </button>#}
-                                                </form>
+{#                                                </form>#}
                                             {% endif %}
 
                                         </div>
@@ -305,7 +317,7 @@
                     <div class="col-md-10">
                         <div class="page-content">
                             {% for project in allProjects %}
-                                {% if project.category == '1' %}
+                                {% if project.category == '2' %}
                                     <div class="card"
                                          style="background-image: url(http://127.0.0.1:8000/media/{{ project.image }});background-size: cover;">
                                         <div class="content">
@@ -326,10 +338,12 @@
                                                            placeholder="project ID" required>
 
                                                     <a
-                                                       onclick="document.getElementById('likeButtonSubmit').click()"> <i id="likeButton"
-                                                            class="fas fa-heart"></i>{{ project.likes }}</a>
-{#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-                                                    <button id="likeButtonSubmit" type="submit" class="btn btn-danger"
+                                                            onclick="document.getElementById('likeButtonSubmit{{ project.id }}').click()">
+                                                        <i id="likeButton"
+                                                           class="fas fa-heart"></i>{{ project.likes }}</a>
+                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
+                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"
+                                                            class="btn btn-danger"
                                                             style="display: none;">Like
                                                     </button>
                                                     {#                                                    <button class="like-button">#}
@@ -382,7 +396,7 @@
                     <div class="col-md-10">
                         <div class="page-content">
                             {% for project in allProjects %}
-                                {% if project.category == '1' %}
+                                {% if project.category == '3' %}
                                     <div class="card"
                                          style="background-image: url(http://127.0.0.1:8000/media/{{ project.image }});background-size: cover;">
                                         <div class="content">
@@ -403,10 +417,12 @@
                                                            placeholder="project ID" required>
 
                                                     <a
-                                                       onclick="document.getElementById('likeButtonSubmit').click()"> <i id="likeButton"
-                                                            class="fas fa-heart"></i>{{ project.likes }}</a>
-{#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
-                                                    <button id="likeButtonSubmit" type="submit" class="btn btn-danger"
+                                                            onclick="document.getElementById('likeButtonSubmit{{ project.id }}').click()">
+                                                        <i id="likeButton"
+                                                           class="fas fa-heart"></i>{{ project.likes }}</a>
+                                                    {#                                                    <div style="display: inline;" class="no">{{ project.likes }}</div>#}
+                                                    <button id="likeButtonSubmit{{ project.id }}" type="submit"
+                                                            class="btn btn-danger"
                                                             style="display: none;">Like
                                                     </button>
                                                     {#                                                    <button class="like-button">#}
@@ -461,6 +477,23 @@
         crossorigin="anonymous"></script>
 
 <script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
     var scoreProj;
     const showDetails = (prjID, prjTitle, prjDesc, prjVideo, prjPdf) => {
         console.log("Show Details", prjID, prjTitle, prjDesc, prjVideo);
@@ -476,6 +509,39 @@
     setTimeout(() => b.focus(), 100);
     setTimeout(() => b.blur(), 1000);
 
+    const likePressed = async (prjID, noOfLikes) => {
+        var likeNumberID = "numberOfLikes"+prjID;
+        var requestOptions = {
+                'method': 'POST',
+                'headers': new Headers({
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                }),
+                mode: 'same-origin',
+                body: JSON.stringify({
+                    'prjID': prjID,
+                })
+            };
+            await fetch("/like", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    result = JSON.parse(result);
+                    var likes = parseInt(noOfLikes);
+                    if (result.isLiked && result.isSuccess) {
+                        likes = likes+1;
+                        document.getElementById(likeNumberID).innerHTML = likes;
+                    }
+                    else if (!result.isLiked && result.isSuccess) {
+                        likes = likes-1;
+                        if(likes<0)
+                            likes=0;
+                        document.getElementById(likeNumberID).innerHTML = likes;
+                    }
+                })
+                .catch(error => console.error('error', error));
+
+    };
+
     {% if user.is_judge %}
         const giveScores = () => {
             $('#exampleModal').modal('toggle');
@@ -485,7 +551,38 @@
         };
         $('#exampleModal2').on('hidden.bs.modal', function () {
             $('#exampleModal').modal('toggle');
+            document.getElementById("scoreSubmitSuccessMsg").style.display = 'none';
+            document.getElementById("scoreAlreadySubmittedMsg").style.display = 'none';
         });
+
+        const markProjectScores = async () => {
+            var score = document.getElementById('inputScore').value;
+            console.log("#####", score);
+            var requestOptions = {
+                'method': 'POST',
+                'headers': new Headers({
+                    'X-CSRFToken': csrftoken,
+                    'Content-Type': 'application/json',
+                }),
+                mode: 'same-origin',
+                body: JSON.stringify({
+                    'score': score,
+                    'prjID': scoreProj,
+                })
+            };
+            await fetch("/score", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    result = JSON.parse(result);
+                    if (result.isSuccess && !result.alreadySubmitted) {
+                        document.getElementById("scoreSubmitSuccessMsg").style.display = 'block';
+                    }
+                    if (result.alreadySubmitted) {
+                        document.getElementById("scoreAlreadySubmittedMsg").style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('error', error));
+        };
     {% endif %}
 </script>
 <script src='https://cldup.com/S6Ptkwu_qA.js'></script>
