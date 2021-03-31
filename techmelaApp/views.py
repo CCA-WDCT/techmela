@@ -9,7 +9,7 @@ from .models import Project, CustomUser, ProjectLike, ProjectScore
 
 
 def index(request):
-    allProjects = Project.objects.all()
+    allProjects = Project.objects.all().order_by('id')
     return render(request, 'techmelaApp/techmela.html', {'allProjects': allProjects})
 
 
