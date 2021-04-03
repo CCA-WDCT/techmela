@@ -63,9 +63,20 @@ body {
 .footerInfo {
     color: white;
     text-align: center;
-    padding-bottom: 3%;
+    padding-bottom: 1%;
     padding-top: 5%;
-    font-size: 20px;
+    font-size: 25px;
+}
+
+.footerWdctLogo {
+    height: 70px;
+    width: 70px;
+    float: right;
+    margin-right: 1vw;
+}
+
+.footerWdctText {
+    font-size: 13px;
 }
 
 #likeButton {
@@ -106,6 +117,15 @@ body {
 
     .sectionHeading {
         font-size: 2rem;
+    }
+
+    .footerWdctLogo {
+        height: 50px;
+        width: 50px;
+    }
+
+    .footerWdctText {
+        font-size: 10px;
     }
 }
 
