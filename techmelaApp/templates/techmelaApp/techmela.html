@@ -235,7 +235,7 @@
                             {% for project in allProjects %}
                                 {% if project.category == '1' %}
                                     <div class="card"
-                                         style="background-image: url(https://techmela.arhn.co.in/media/{{ project.image }});background-size: cover;">
+                                         style="background-image: url('http://127.0.0.1:8000/media/{{ project.image }} ')" >
                                         <div class="content">
                                             <h2 class="title">{{ project.title }}</h2>
                                             <p class="copy">{{ project.shortDescription }}</p>

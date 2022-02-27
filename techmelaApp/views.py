@@ -10,7 +10,8 @@ from .models import Project, CustomUser, ProjectLike, ProjectScore
 
 def index(request):
     allProjects = Project.objects.all().order_by('id')
-    return render(request, 'techmelaApp/techmela.html', {'allProjects': allProjects})
+    return render(request, 'techmelaApp/techmelapart2.html', {'allProjects': allProjects})
+
 
 
 def logIn(request):
@@ -25,31 +26,33 @@ def logIn(request):
             return redirect('home')
         else:
             messages.info(request, "The username and password didn't match. Please try again.")
-            return render(request, 'techmelaApp/login.html', {})
+            return render(request, 'techmelaApp/login2.html', {})
 
-    return render(request, 'techmelaApp/login.html')
+    return render(request, 'techmelaApp/login2.html')
 
 
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        password2 = request.POST.get('password2')
         email = request.POST.get('email')
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
 
         if CustomUser.objects.filter(username=username).exists():
             messages.info(request, 'Username already in use.')
-            return render(request, 'techmelaApp/signup.html', {})
+            return render(request, 'techmelaApp/signup2.html', {})
+        if password == password2 :
+            user = CustomUser(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+            user.set_password(password)
 
-        user = CustomUser(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
-        user.set_password(password)
+            user.save()
+            return redirect('home')
 
-        user.save()
+        return redirect('signup')
 
-        return redirect('login')
-
-    return render(request, 'techmelaApp/signup.html')
+    return render(request, 'techmelaApp/signup2.html')
 
 
 def logOut(request):
