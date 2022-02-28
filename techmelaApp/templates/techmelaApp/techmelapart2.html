@@ -676,8 +676,7 @@ Launch demo modal
                                             <div style="text-align: left;margin-left: -20px;">
                                                     <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
                                                     
-                                                     <p class="card-text" style="text-align: left;color: #f1f1f1;">{{ project.shortDescription }}</p> 
-                                            </div>
+      </div>
                                         
                                             <div style="text-align: right;position:absolute;left: 70%;">
                                                 {% if user.is_authenticated %}
@@ -692,7 +691,7 @@ Launch demo modal
                                          <a
                                                  onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                              <i id="likeButton"
-                                                class="fas fa-heart"></i>
+                                                class="fas fa-heart" style="font-size: 30px;"></i>
                                                 <span
                                                  id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
