@@ -422,7 +422,7 @@ margin-left: 45vw!important;
 	 padding: 1.5em 0em;
 	 position: absolute;
      
-	 top: -20vh;
+	 top: 0vh;
 	 left: 62vw;
 	 width: 40em;
 	 margin: 0 0 0 -20em;
@@ -618,23 +618,23 @@ Launch demo modal
             <canvas id="universe" ></canvas>
           
           
-<div class="container" style="top:20vh;z-index: 200;position:fixed;justify-content: center;margin-left: auto;margin-right: auto;">
+<div class="container-fluid" style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100vw;">
           
                 
-
-    <p class="line">
+  <div style="margin-left: 0vw;">
+      <p class="line">
 
         <span class="head4">
           TECHMELA
         </span>
       
       </p>
-    <h5 class="mainSubheading mob" style="text-align: center;margin-left: 15vw;color:rgb(245, 242, 239) ;">Aarohan 2021 presents TechMela</h5>
+    <h5 class="mainSubheading mob" style="text-align: center;margin-left: 0vw;color:rgb(245, 242, 239) ;margin-top: 20vh;">Aarohan 2021 presents TechMela</h5>
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="text-align: center;">
         <li class="nav-item" role="presentation">
           
-                <button class="nav-link " id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
                     type="button" role="tab" aria-controls="pills-home" aria-selected="true">Robotics
             </button>
   
@@ -657,7 +657,7 @@ Launch demo modal
             
         </li>
     </ul>
-    <div class="tab-content scroll" id="pills-tabContent">
+    <div class="tab-content " id="pills-tabContent" style="margin-left: 5vw;" >
 
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         
@@ -671,14 +671,14 @@ Launch demo modal
                                 {% if project.category == '1' %}
                                 <div class="card" style="width: 18rem;background-color: transparent;">
                                     <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10%;margin:10px;text-align: center;height: auto;padding: 0;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
                                         <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left: -20px;">
+                                            <div style="text-align: left;margin-left:0px;">
                                                     <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
                                                     
       </div>
                                         
-                                            <div style="text-align: right;position:absolute;left: 70%;">
+                                            <div style="text-align: right;position:absolute;right: 2px;">
                                                 {% if user.is_authenticated %}
 
                                          <input style="text-align: center; padding: 10px;display: none;"
@@ -691,7 +691,7 @@ Launch demo modal
                                          <a
                                                  onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                              <i id="likeButton"
-                                                class="fas fa-heart" style="font-size: 30px;"></i>
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
                                                 <span
                                                  id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
@@ -737,15 +737,14 @@ Launch demo modal
                                 {% if project.category == '2' %}
                                 <div class="card" style="width: 18rem;background-color: transparent;">
                                     <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10%;margin:10px;text-align: center;height: auto;padding: 0;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
                                         <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left: -20px;">
+                                            <div style="text-align: left;margin-left:0px;">
                                                     <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
                                                     
-                                                     <p class="card-text" style="text-align: left;color: #f1f1f1;">{{ project.shortDescription }}</p> 
-                                            </div>
+      </div>
                                         
-                                            <div style="text-align: right;position:absolute;right: 0;">
+                                            <div style="text-align: right;position:absolute;right: 2px;">
                                                 {% if user.is_authenticated %}
 
                                          <input style="text-align: center; padding: 10px;display: none;"
@@ -758,7 +757,7 @@ Launch demo modal
                                          <a
                                                  onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                              <i id="likeButton"
-                                                class="fas fa-heart"></i>
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
                                                 <span
                                                  id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
@@ -803,15 +802,14 @@ Launch demo modal
                                 {% if project.category == '3' %}
                                 <div class="card" style="width: 18rem;background-color: transparent;">
                                     <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10%;margin:10px;text-align: center;height: auto;padding: 0;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
                                         <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left: -20px;">
+                                            <div style="text-align: left;margin-left:0px;">
                                                     <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
                                                     
-                                                     <p class="card-text" style="text-align: left;color: #f1f1f1;">{{ project.shortDescription }}</p> 
-                                            </div>
+      </div>
                                         
-                                            <div style="text-align: right;position:absolute;right: 0;">
+                                            <div style="text-align: right;position:absolute;right: 2px;">
                                                 {% if user.is_authenticated %}
 
                                          <input style="text-align: center; padding: 10px;display: none;"
@@ -824,7 +822,7 @@ Launch demo modal
                                          <a
                                                  onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
                                              <i id="likeButton"
-                                                class="fas fa-heart"></i>
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
                                                 <span
                                                  id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
@@ -843,7 +841,6 @@ Launch demo modal
                                        
 
                                       </div>
-                                    
                                    
                                   
                                   </div>
@@ -857,24 +854,26 @@ Launch demo modal
         </div>
 
     </div>
+  </div>
+    
    
   
-    <div class="container mob">
+    <div class=" mob">
       
               
                 
-                        <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: fixed;top:10px;">
+                        <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:10px;">
                             TechMela presented by <img style="height: 70px; width: 70px; position: absolute;left: 0;top: 20px;"
                                                        src="{% static 'techmelaApp/img/final-logo.png' %}" alt="cca-logo"/>
                         </a>
-                        <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: fixed;top:10px;">
+                        <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:10px;">
                                      <img style="height: 70px; width: 70px; position: absolute;left: 60px ;top: 20px;" src="{% static 'techmelaApp/img/NEW-CCA-Logo_Colored.png' %}" alt="cca-logo" />
                                            </a>
                    
                
     </div>
 
-    <div class="container mob" style="text-decoration: none;color: white;position: fixed;top:20px;left: 85vw;">
+    <div class="container mob" style="text-decoration: none;color: white;position: absolute;top:20px;left: 85vw;z-index: 999;">
         {% if user.is_authenticated %}
         <div style="text-align: center;margin-bottom: 2%;display: flex;padding: 10px;">
             <a  style="text-decoration: none;">
