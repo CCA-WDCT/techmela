@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+GOOGLE_RECAPTCHA_SITE_KEY = '6LcrbqkeAAAAAPX37wguoWG6hpM9ftszcjGBvdnk'
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LcrbqkeAAAAAKnnSUI3Hf_uvxGtxBuFwlIm0FZY'
+
 
 # Application definition
 

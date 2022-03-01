@@ -23,7 +23,8 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
   </head>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
@@ -441,7 +442,14 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 </style>
   <body>
-  
+    <script>
+        //global grecaptcha
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+          });
+        });
+    </script>
 
     <div class="container2">
     <div class="content">    
@@ -459,7 +467,8 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
                     {% csrf_token %}
                     <input type="text" name="username" placeholder="Username"  required="required" />
                     <input type="password" name="password" placeholder="Password" required="required" />
-                    <button type="submit" class="btn btn-primary btn-block btn-large  ">Let me in.</button>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <button type="submit" class="btn btn-primary btn-block btn-large  ">Login</button>
                 </form>
                 <div class="c" style="color: red;margin-top: 2vh;">
                     {% for mes in messages %}
@@ -490,7 +499,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
 <div class="container" style="text-decoration: none;color: white;position: fixed;top:20px;left: 85vw;">
     <a href="{% url 'signup' %}" style="text-decoration: none;padding-left: 10px;">
-        <h3   > Don't have an account?
+        <h3   > Don't have an account? Sign Up
         </h3>
     </a>
 </div>

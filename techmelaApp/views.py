@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
 import json
-
+import requests
+from django.conf import settings
 from .models import Project, CustomUser, ProjectLike, ProjectScore
 
 
@@ -18,17 +19,29 @@ def logIn(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+        print(result)
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return redirect('home')
+        if result['success']:
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.info(request, "The username and password didn't match. Please try again.")
+                return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
         else:
-            messages.info(request, "The username and password didn't match. Please try again.")
-            return render(request, 'techmelaApp/login2.html', {})
+            messages.info(request, "Could not login. Please try again.")
+            return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
-    return render(request, 'techmelaApp/login2.html')
+    return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
 
 def signup(request):
@@ -40,19 +53,30 @@ def signup(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
 
-        if CustomUser.objects.filter(username=username).exists():
-            messages.info(request, 'Username already in use.')
-            return render(request, 'techmelaApp/signup2.html', {})
-        if password == password2 :
-            user = CustomUser(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
-            user.set_password(password)
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+        print(result)
 
-            user.save()
-            return redirect('home')
+        if result['success']:
+            if CustomUser.objects.filter(username=username).exists():
+                messages.info(request, 'Username already in use.')
+                return render(request, 'techmelaApp/signup2.html', {})
+            if password == password2 :
+                user = CustomUser(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                user.set_password(password)
 
+                user.save()
+                return redirect('logIn')
+
+            return redirect('signup')
         return redirect('signup')
 
-    return render(request, 'techmelaApp/signup2.html')
+    return render(request, 'techmelaApp/signup2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
 
 def logOut(request):
