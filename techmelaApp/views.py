@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
 import json
-import requests
+
 from django.conf import settings
 from .models import Project, CustomUser, ProjectLike, ProjectScore
 
@@ -24,7 +24,7 @@ def logIn(request):
             'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
             'response': recaptcha_response
         }
-        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        r = request.post('https://www.google.com/recaptcha/api/siteverify', data=data)
         result = r.json()
         print(result)
 
