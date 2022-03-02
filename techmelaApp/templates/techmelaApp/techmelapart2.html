@@ -925,12 +925,12 @@ Launch demo modal
       
               
                 
-                        <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:0px;">
+                        <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
                           <img class="icon1" style="height: 70px; width: 70px; position: absolute;left: 0;top: 10px;"
                                                        src="{% static 'techmelaApp/img/final-logo.png' %}" alt="aarohan-logo"/>
                         </a>
                  
-                                           <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:0px;">
+                                           <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
                                             <img class="icon3" style="height: 40px; width: 130px; position: absolute;left: 150px ;top: 20px;" src="{% static 'techmelaApp/img/Full_White.png' %}" alt="lapkafe-logo" />
                                                   </a>
                    
@@ -943,19 +943,19 @@ Launch demo modal
             <a  style="text-decoration: none;">
                 <h3 >Welcome!! {{ user.username }}</h3> 
             </a>
-            <a href="{% url 'logout' %}" style="text-decoration: none;padding-left: 10px;">
+            <a href="{% url 'logout' %}" style="text-decoration: none;padding-left: 10px;color: rgb(171, 211, 211);">
                 <h3   > Log Out
                 </h3>
             </a>
         </div>
    
     {% else %}
-    <div style="text-align: center;margin-bottom: 2%;display: flex;padding-left: 30px;padding-top: 10px;">
-        <a href="{% url 'signup' %}" style="text-decoration: none;">
-            <h3   > Sign Up 
+    <div style="text-align: center;margin-bottom: 2%;display: flex;padding-left: 40px;padding-top: 10px;">
+        <a href="{% url 'signup' %}" style="text-decoration: none;color: rgb(171, 211, 211);">
+            <h3 style="margin-right:2vw;"  > Sign Up 
             </h3>
         </a>
-        <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 10px;">
+        <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 10px;color: aqua;">
             <h3   > Log In
             </h3>
         </a>
