@@ -387,7 +387,7 @@ a:hover {
    
         
           
-<div class="container" style="top:20vh;z-index: 200;position:fixed;justify-content: center;margin-left: auto;margin-right: auto;">
+<div class="container" style="top:20vh;z-index: 200;position:fixed;justify-content: center;margin-left: auto;margin-right: auto;overflow-x: hidden;overflow-y: scroll;">
                
                 
 
@@ -426,33 +426,51 @@ a:hover {
                         <div class="page-content">
                             {% for project in allProjects %}
                                 {% if project.category == '1' %}
-                                    <div class="card"
-                                         style="background-image: url('http://127.0.0.1:8000/media/{{ project.image }} ')" >
-                                        <div class="content">
-                                            <h2 class="title">{{ project.title }}</h2>
-                                            <p class="copy">{{ project.shortDescription }}</p>
-                                            <button 
-                                                    class="btn detailsButton">Show Details
-                                            </button>
+                                <div class="card" style="width: 18rem;background-color: transparent;">
+                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
+                                        <div style="display: flex;padding: 10px;">
+                                            <div style="text-align: left;margin-left:0px;">
+                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
+                                                    
+      </div>
+                                        
+                                            <div style="text-align: right;position:absolute;right: 2px;">
+                                                {% if user.is_authenticated %}
 
-                                            {% if user.is_authenticated %}
+                                         <input style="text-align: center; padding: 10px;display: none;"
+                                                type="text"
+                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
+                                                value="{{ project.id }}"
+                                                aria-describedby="emailHelp"
+                                                placeholder="project ID" required>
 
-                                                <input style="text-align: center; padding: 10px;display: none;"
-                                                       type="text"
-                                                       class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                       value="{{ project.id }}"
-                                                       aria-describedby="emailHelp"
-                                                       placeholder="project ID" required>
+                                         <a
+                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
+                                             <i id="likeButton"
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
+                                                <span
+                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
-                                                <a>
-                                                    <i id="likeButton"
-                                                       class="fas fa-heart"></i><span
-                                                        id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
-
-                                            {% endif %}
+                                     {% endif %}
+                                         </div>
+                                         
+                                        </div>
+                                    
+                                 
+                                        <div>
+                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
+                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
+                              </button>     
 
                                         </div>
-                                    </div>
+                                       
+
+                                      </div>
+                                    
+                                   
+                                  
+                                  </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -474,34 +492,51 @@ a:hover {
                         <div class="page-content">
                             {% for project in allProjects %}
                                 {% if project.category == '2' %}
-                                    <div class="card"
-                                         style="background-image: url('https://techmela.arhn.co.in/media/{{ project.image }}');background-size: cover;">
-                                        <div class="content">
-                                            <h2 class="title">{{ project.title }}</h2>
-                                            <p class="copy">{{ project.shortDescription }}</p>
-                                            <button
-                                                    class="btn detailsButton">Show Details
-                                            </button>
+                                <div class="card" style="width: 18rem;background-color: transparent;">
+                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
+                                        <div style="display: flex;padding: 10px;">
+                                            <div style="text-align: left;margin-left:0px;">
+                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
+                                                    
+      </div>
+                                        
+                                            <div style="text-align: right;position:absolute;right: 2px;">
+                                                {% if user.is_authenticated %}
 
-                                            {% if user.is_authenticated %}
+                                         <input style="text-align: center; padding: 10px;display: none;"
+                                                type="text"
+                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
+                                                value="{{ project.id }}"
+                                                aria-describedby="emailHelp"
+                                                placeholder="project ID" required>
 
-                                                <input style="text-align: center; padding: 10px;display: none;"
-                                                       type="text"
-                                                       class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                       value="{{ project.id }}"
-                                                       aria-describedby="emailHelp"
-                                                       placeholder="project ID" required>
+                                         <a
+                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
+                                             <i id="likeButton"
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
+                                                <span
+                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
-                                                <a
-                                                        onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
-                                                    <i id="likeButton"
-                                                       class="fas fa-heart"></i><span
-                                                        id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
-
-                                            {% endif %}
+                                     {% endif %}
+                                         </div>
+                                         
+                                        </div>
+                                    
+                                 
+                                        <div>
+                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
+                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
+                              </button>     
 
                                         </div>
-                                    </div>
+                                       
+
+                                      </div>
+                                    
+                                   
+                                  
+                                  </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -512,7 +547,7 @@ a:hover {
         </div>
 
 
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" style="position: fixed;">
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
            
 
             <div class="container-fluid">
@@ -522,34 +557,51 @@ a:hover {
                         <div class="page-content">
                             {% for project in allProjects %}
                                 {% if project.category == '3' %}
-                                    <div class="card"
-                                         style="background-image: url('https://techmela.arhn.co.in/media/{{ project.image }}');background-size: cover;">
-                                        <div class="content">
-                                            <h2 class="title">{{ project.title }}</h2>
-                                            <p class="copy">{{ project.shortDescription }}</p>
-                                            <button
-                                                    class="btn detailsButton">Show Details
-                                            </button>
+                                <div class="card" style="width: 18rem;background-color: transparent;">
+                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
+                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
+                                        <div style="display: flex;padding: 10px;">
+                                            <div style="text-align: left;margin-left:0px;">
+                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
+                                                    
+      </div>
+                                        
+                                            <div style="text-align: right;position:absolute;right: 2px;">
+                                                {% if user.is_authenticated %}
 
-                                            {% if user.is_authenticated %}
+                                         <input style="text-align: center; padding: 10px;display: none;"
+                                                type="text"
+                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
+                                                value="{{ project.id }}"
+                                                aria-describedby="emailHelp"
+                                                placeholder="project ID" required>
 
-                                                <input style="text-align: center; padding: 10px;display: none;"
-                                                       type="text"
-                                                       class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                       value="{{ project.id }}"
-                                                       aria-describedby="emailHelp"
-                                                       placeholder="project ID" required>
+                                         <a
+                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
+                                             <i id="likeButton"
+                                                class="fas fa-heart" style="font-size: 25px;"></i>
+                                                <span
+                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
 
-                                                <a
-                                                        onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
-                                                    <i id="likeButton"
-                                                       class="fas fa-heart"></i><span
-                                                        id="numberOfLikes{{ project.id }}">{{ project.likes }}</span></a>
-
-                                            {% endif %}
+                                     {% endif %}
+                                         </div>
+                                         
+                                        </div>
+                                    
+                                 
+                                        <div>
+                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
+                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
+                              </button>     
 
                                         </div>
-                                    </div>
+                                       
+
+                                      </div>
+                                    
+                                   
+                                  
+                                  </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
