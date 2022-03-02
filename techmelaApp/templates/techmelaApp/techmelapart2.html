@@ -330,21 +330,40 @@ a:hover {
     .footerWdctText {
         font-size: 10px;
     }
+    .line{
+        left: -45vw!important;
+    }
     .line .head4 {
 
 font: 500 3em "Oswald", cursive!important;
-margin-top: 5vh!important;
-margin-left: 50vw!important;
+margin-top: 3vh!important;
+margin-left: 20vw!important;
+   left:auto!important;
+      right: auto!important;
+
+
 }
-    .mob{
-        display: none;
-    }
+.mob2{
+    right: 0!important;
+    margin-top: 15vh!important;
+    margin-left: 10vw!important;
+}
+.headingae{
+    opacity: 1;
+    color: white;
+    margin-bottom: 0!important;
+    margin-left: 1vw!important;
+    padding: 0;
+    margin-top: 20vh!important;
+}
     .nav{
+        left: 0!important;
         margin-top: -5vh!important;
         margin-left: 30px!important;
     }
     .zone{
-        margin-top:20vh!important;
+        margin-top:0vh!important;
+        padding-left: 15vw!important;
     }
     .mob2{
       position: absolute;
@@ -352,6 +371,27 @@ margin-left: 50vw!important;
       right: auto!important;
       top: 1vh !important;
     }
+   .mobile{
+    padding-left: 10vw!important;
+   }
+   .contbox{
+    padding-left: 10vw!important;
+
+   }
+   .icon1{
+       left: auto!important;
+       right:auto!important;
+       margin: 0 !important;
+       margin-top: -4.5vh!important;
+       padding: 0!important;
+   }
+  .icon2{
+       left: 60vw!important;
+       right:auto!important;
+       margin: 0 !important;
+       margin-top: -4.5vh!important;
+       padding: 0!important;
+   }
 }
 
 @media only screen and (max-width: 800px) {
@@ -432,9 +472,9 @@ margin-left: 50vw!important;
 	 position: absolute;
      
 	 top: 0vh;
-	 left: 62vw;
+	 left: 28vw;
 	 width: 40em;
-	 margin: 0 0 0 -20em;
+
 }
  .line .head4 {
 	 font: 700 4em "Oswald", cursive;
@@ -626,11 +666,14 @@ Launch demo modal
           
             <canvas id="universe" ></canvas>
           
-          
-<div class="container-fluid" style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100vw;overflow-x: hidden;">
-          
-                
-  <div style="margin-left: 0vw;">
+      
+
+        
+<div class="container-fluid mobile" style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100vw;overflow-x: hidden;align-items: center;">
+      
+      <div class="mobile" style="display: flex;
+      justify-content: center;">
+            <div style="margin-left: -20vw;text-align: center;">
       <p class="line">
 
         <span class="head4">
@@ -638,13 +681,13 @@ Launch demo modal
         </span>
       
       </p>
-    <h5 class="mainSubheading mob" style="text-align: center;margin-left: 0vw;color:rgb(245, 242, 239) ;margin-top: 20vh;">Aarohan 2021 presents TechMela</h5>
+    <h5 class="mainSubheading headingae" style="text-align: center;margin-left: 15vw;color:rgb(245, 242, 239) ;margin-top: 20vh;">Aarohan 2022 presents TechMela</h5>
 
-    <ul class="nav nav-pills mb-3 zone" id="pills-tab" role="tablist" style="text-align: center;">
+    <ul class="nav nav-pills mb-3 zone" id="pills-tab" role="tablist" style="text-align: center;margin-left: 25vw;">
         <li class="nav-item" role="presentation">
           
                 <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Robotics
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Software
             </button>
   
             
@@ -652,7 +695,7 @@ Launch demo modal
         <li class="nav-item" role="presentation">
           
                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Assistive Technology
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Hardware
             </button>
     
            
@@ -660,13 +703,13 @@ Launch demo modal
         <li class="nav-item" role="presentation">
    
                 <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Software Projects
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Research Corner
             </button>
 
             
         </li>
     </ul>
-    <div class="tab-content " id="pills-tabContent" style="margin-left: 5vw;" >
+    <div class="tab-content contbox" id="pills-tabContent" style="margin-left: 0vw;" >
 
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
         
@@ -864,19 +907,21 @@ Launch demo modal
 
     </div>
   </div>
+      </div>          
+
     
-   
+
   
     <div class=" mob">
       
               
                 
                         <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:10px;">
-                            TechMela presented by <img style="height: 70px; width: 70px; position: absolute;left: 0;top: 20px;"
+                            TechMela presented by <img class="icon1" style="height: 70px; width: 70px; position: absolute;left: 0;top: 20px;"
                                                        src="{% static 'techmelaApp/img/final-logo.png' %}" alt="cca-logo"/>
                         </a>
                         <a href="https://ccanitd.in" style="text-decoration: none;color: white;position: absolute;top:10px;">
-                                     <img style="height: 70px; width: 70px; position: absolute;left: 60px ;top: 20px;" src="{% static 'techmelaApp/img/NEW-CCA-Logo_Colored.png' %}" alt="cca-logo" />
+                                     <img class="icon2" style="height: 70px; width: 70px; position: absolute;left: 60px ;top: 20px;" src="{% static 'techmelaApp/img/NEW-CCA-Logo_Colored.png' %}" alt="cca-logo" />
                                            </a>
                    
                

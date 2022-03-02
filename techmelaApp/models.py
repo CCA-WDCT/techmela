@@ -17,7 +17,7 @@ class Project(models.Model):
     pdfLink = models.TextField(blank=False)
     image = models.ImageField(blank=False)
     likes = models.IntegerField(default=0)
-    CATEGORY = [('1', 'Robotics'), ('2', 'Assitive Technology'), ('3', 'Software Projects')]
+    CATEGORY = [('1', 'Software'), ('2', 'Hardware'), ('3', 'Research Corner')]
     category = models.CharField(max_length=50, choices=CATEGORY, default=1)
 
     def __str__(self):
