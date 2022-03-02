@@ -18,7 +18,8 @@
 
     <script src="https://kit.fontawesome.com/c3db3ba7c7.js" crossorigin="anonymous"></script>
     <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -507,161 +508,76 @@ margin-left: 20vw!important;
 		 background-position: 100% 50%;
 	}
 }
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.btn { display: inline-block; *display: inline; *zoom: 1; padding: 4px 10px 4px; margin-bottom: 0; font-size: 13px; line-height: 18px; color: #333333; text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle; background-color: #f5f5f5; background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6); background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)); background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6); background-image: -o-linear-gradient(top, #ffffff, #e6e6e6); background-image: linear-gradient(top, #ffffff, #e6e6e6); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6, GradientType=0); border-color: #e6e6e6 #e6e6e6 #e6e6e6; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border: 1px solid #e6e6e6; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); cursor: pointer; *margin-left: .3em; }
+.btn:hover, .btn:active, .btn.active, .btn.disabled, .btn[disabled] { background-color: #e6e6e6; }
+.btn-large { padding: 9px 14px; font-size: 15px; line-height: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+.btn:hover { color: #333333; text-decoration: none; background-color: #e6e6e6; background-position: 0 -15px; -webkit-transition: background-position 0.1s linear; -moz-transition: background-position 0.1s linear; -ms-transition: background-position 0.1s linear; -o-transition: background-position 0.1s linear; transition: background-position 0.1s linear; }
+.btn-primary, .btn-primary:hover { text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); color: #ffffff; }
+.btn-primary.active { color: rgba(255, 255, 255, 0.75); }
+.btn-primary { background-color: #4a77d4; background-image: -moz-linear-gradient(top, #6eb6de, #4a77d4); background-image: -ms-linear-gradient(top, #6eb6de, #4a77d4); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6eb6de), to(#4a77d4)); background-image: -webkit-linear-gradient(top, #6eb6de, #4a77d4); background-image: -o-linear-gradient(top, #6eb6de, #4a77d4); background-image: linear-gradient(top, #6eb6de, #4a77d4); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#6eb6de, endColorstr=#4a77d4, GradientType=0);  border: 1px solid #3762bc; text-shadow: 1px 1px 1px rgba(0,0,0,0.4); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.5); }
+.btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
+.btn-block { width: 100%; display:block; }
+
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
+
+
+.login { 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:300px;
+	height:300px;
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+input { 
+	width: 100%; 
+	margin-bottom: 10px; 
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+.c {
+            text-align: center;
+        }
+
  
 
 
 
 </style>
 <body>
-    <button id="launchModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-    style="display: none;">
-Launch demo modal
-</button>
+    <script>
+        //global grecaptcha
+        grecaptcha.ready(function() {
+          grecaptcha.execute('{{recaptcha_site_key}}', {action: "/contact/"}).then(function(token) {
+            document.getElementById('g-recaptcha-response').value = token;
+          });
+        });
+    </script>
 
 <!-- Modal -->
-<div class="modal fade modal-fullscreen-sm-down" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
- aria-hidden="true">
-<div class="modal-dialog modal-xl" ">
-    <div class="modal-content" style="background-color: #020409;color: #f1f1f1;">
-        <div class="modal-header">
-            <h5 class="modal-title container-fluid modalPrjTitle" id="exampleModalLabel"
-                style="text-align: center;font-weight: bold; font-size: 20px;">Project title</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="color: #f1f1f1;"></button>
-        </div>
-        <div class="modal-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-5">
-                        <!--  video-->
-                        <div class="projectVideo">
-                            <iframe id="modalPrjVideo" class="prjVideo" style="height: 30vh;"
-                                    src="">
-                            </iframe>
-                            <iframe id="modalPrjPdf" class="prjVideo" style="height: 30vh;"
-                                    src="">
-                            </iframe>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        {% if user.is_judge %}
-                            <a id="judgeModalAnchor" onclick="giveScores()"
-                               style=" text-decoration: none; cursor: pointer;">
-                                <div style=" margin-top: 2vh;margin-bottom: 10%;">
-                                    <div style="display: inline; color: white;margin-top: 10px; margin-left:10px;background-color:chocolate;padding: 20px;">
-                                        GIVE SCORES
-                                    </div>
-                                </div>
-                            </a>
-                        {% endif %}
-                        <!--  desc-->
-                        <p id="modalPrjDesc">Project Description</p>
-
-                        <a id="pdfDownloadAnchor" target="_blank" href="#" style=" text-decoration: none;">
-                            <div style=" margin-top: 2vh;">
-                                <i style="font-size: 2rem; color: red;" class="far fa-file-pdf"></i>
-                                <div style="display: inline; color: dodgerblue;margin-top: 10px; margin-left:10px;position: absolute;">
-                                    Download full details of the project
-                                </div>
-                            </div>
-                        </a>
 
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div>
-</div>
-</div>
-
-{% if user.is_judge %}
-<button id="launchModal2" type="button" class="btn btn-primary" data-bs-toggle="modal"
-        data-bs-target="#exampleModal2"
-        style="display: none;">
-    Launch demo modal
-</button>
 
 <!-- Modal -->
-<div class="modal fade modal-fullscreen-sm-down" id="exampleModal2" tabindex="-1"
-     aria-labelledby="exampleModalLabel2"
-     aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content" style="background-color: #020409;">
-            <div class="modal-header">
-                <h5 class="modal-title container-fluid modalPrjTitle" id="exampleModalLabel2"
-                    style="text-align: center;font-weight: bold; font-size: 20px; color: #f1f1f1;">Give Score</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8" style="padding: 10px;">
-                            <div class="scoreCriteria" style="color: #f1f1f1;">
-                                Judging Criteria:
-                            </div>
-                            <div class="scorePoints" style="color: #f1f1f1;">
-                                1. Presentation
-                            </div>
-                            <div class="scorePoints" style="color: #f1f1f1;">
-                                2. Creativity
-                            </div>
-                            <div class="scorePoints" style="color: #f1f1f1;">
-                                3. Execution
-                            </div>
-                            <div class="scorePoints" style="color: #f1f1f1;">
-                                4. Design and Methodology
-                            </div>
-                            <div class="scorePoints" style="color: #f1f1f1;">
-                                5. Social Benefits of project
-                            </div>
-                            <div class="scorePoints " style="color: #f1f1f1;">
-                                6. Marketing possibility
-                            </div>
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8" style="text-align: center;">
-                            <div class="form-group c " style="color: #f1f1f1;padding: 10px;">
-                                <label for="inputScore"
-                                       style="margin-bottom: 1vh;margin-top: 1vh;font-size: 15px;text-align: center;">Score
-                                    out of 10</label>
-                                <input style="text-align: center; padding: 10px;" type="number"
-                                       class="form-control" id="inputScore" name="score"
-                                       aria-describedby="emailHelp"
-                                       placeholder="Enter Score out of 10" max="10" required>
-                                <input style="text-align: center; padding: 10px;display: none;" type="text"
-                                       class="form-control" id="inputPrjID" name="prjID"
-                                       aria-describedby="emailHelp"
-                                       placeholder="project ID" required>
-                            </div>
-                            <button onclick="markProjectScores()" class="btn btn-danger"
-                                    style="background-color: #F7413E;margin-bottom: 3vh;">Submit Score
-                            </button>
-                            <div id="scoreSubmitSuccessMsg" style="color: dodgerblue;display: none;">Scores
-                                submitted successfully.
-                            </div>
-                            <div id="scoreAlreadySubmittedMsg" style="color: red;display: none;">Scores already
-                                submitted.
-                            </div>
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-{% endif %}
+
 
     <div class="container2">
         <div class="content">    
@@ -673,250 +589,31 @@ Launch demo modal
 
         
 <div class="container-fluid mobile" style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100%;overflow-x: hidden;">
-      
-      <div class="mobile2" style="display: flex;
-      justify-content: center;">
-            <div style="margin-left: 0vw;text-align: center;">
-      <p class="line">
+     
 
-        <span class="head4">
-          TECHMELA
-        </span>
-      
-      </p>
-    <h5 class="mainSubheading headingae" style="text-align: center;color:rgb(245, 242, 239) ;margin-top: 20vh;">Aarohan 2022 presents TechMela</h5>
-<div style="display: flex;flex-direction: column;text-align: center;margin-left: 5vw;width: 100vw;">
-
-
-        <ul class="nav nav-pills  zone" id="pills-tab" role="tablist" style="margin-left: 29vw;">
-        <li class="nav-item" role="presentation">
-          
-                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Software
-            </button>
-  
-            
-        </li>
-        <li class="nav-item" role="presentation">
-          
-                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Hardware
-            </button>
     
-           
-        </li>
-        <li class="nav-item" role="presentation">
-   
-                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Research Corner
-            </button>
+    <div class="login"  style="margin-top: -20vh;">
+        <h1>Sign Up</h1>
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username"  required="required" />
+            <input type="password" name="password" placeholder="Password" required="required" />
+            <input type="password" name="password2" placeholder="Confirm Password" required="required" />
+            <input type="text" name="first_name" placeholder="First Name" required="required" />
+            <input type="text" name="last_name" placeholder="Last Name" required="required" />
+            <input type="email" name="email" placeholder="Email" required="required" />
 
-            
-        </li>
-    </ul>
-    <div class="tab-content contbox" id="pills-tabContent"   >
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-        
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-md-10">
-                        <div class="page-content">
-                            {% for project in allProjects %}
-                                {% if project.category == '1' %}
-                                <div class="card" style="width: 18rem;background-color: transparent;">
-                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
-                                        <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left:0px;">
-                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
-                                                    
-      </div>
-                                        
-                                            <div style="text-align: right;position:absolute;right: 2px;">
-                                                {% if user.is_authenticated %}
-
-                                         <input style="text-align: center; padding: 10px;display: none;"
-                                                type="text"
-                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                value="{{ project.id }}"
-                                                aria-describedby="emailHelp"
-                                                placeholder="project ID" required>
-
-                                         <a
-                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
-                                             <i id="likeButton"
-                                                class="fas fa-heart" style="font-size: 25px;"></i>
-                                                <span
-                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
-
-                                     {% endif %}
-                                         </div>
-                                         
-                                        </div>
-                                    
-                                 
-                                        <div>
-                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
-                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
-                              </button>     
-
-                                        </div>
-                                       
-
-                                      </div>
-                                    
-                                   
-                                  
-                                  </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </div>
-
+            <button type="submit" class="btn btn-primary btn-block btn-large  ">Create Account</button>
+        </form>
+        <div class="c" style="color: red;margin-top: 2vh;">
+            {% for mes in messages %}
+                <b>{{ mes }}</b>
+            {% endfor %}
         </div>
-
-
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-        
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-md-10">
-                        <div class="page-content">
-                            {% for project in allProjects %}
-                                {% if project.category == '2' %}
-                                <div class="card" style="width: 18rem;background-color: transparent;">
-                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
-                                        <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left:0px;">
-                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
-                                                    
-      </div>
-                                        
-                                            <div style="text-align: right;position:absolute;right: 2px;">
-                                                {% if user.is_authenticated %}
-
-                                         <input style="text-align: center; padding: 10px;display: none;"
-                                                type="text"
-                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                value="{{ project.id }}"
-                                                aria-describedby="emailHelp"
-                                                placeholder="project ID" required>
-
-                                         <a
-                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
-                                             <i id="likeButton"
-                                                class="fas fa-heart" style="font-size: 25px;"></i>
-                                                <span
-                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
-
-                                     {% endif %}
-                                         </div>
-                                         
-                                        </div>
-                                    
-                                 
-                                        <div>
-                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
-                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
-                              </button>     
-
-                                        </div>
-                                       
-
-                                      </div>
-                                    
-                                   
-                                  
-                                  </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-         
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-md-10">
-                        <div class="page-content">
-                            {% for project in allProjects %}
-                                {% if project.category == '3' %}
-                                <div class="card" style="width: 18rem;background-color: transparent;">
-                                    <img src="http://127.0.0.1:8000/media/{{ project.image }}" class="card-img-top" alt="..." style="width: 100%;height:150px;">
-                                    <div class="card-body" style="width:100%;padding: 10px;margin:1px;text-align: center;height: auto;padding: 0;">
-                                        <div style="display: flex;padding: 10px;">
-                                            <div style="text-align: left;margin-left:0px;">
-                                                    <h5 class="card-title" style="text-align: left;color: #f1f1f1;" >{{ project.title }}</h5>
-                                                    
-      </div>
-                                        
-                                            <div style="text-align: right;position:absolute;right: 2px;">
-                                                {% if user.is_authenticated %}
-
-                                         <input style="text-align: center; padding: 10px;display: none;"
-                                                type="text"
-                                                class="form-control" id="inputPrjIDLike" name="prjIDLike"
-                                                value="{{ project.id }}"
-                                                aria-describedby="emailHelp"
-                                                placeholder="project ID" required>
-
-                                         <a
-                                                 onclick="likePressed('{{ project.id }}', '{{ project.likes }}')">
-                                             <i id="likeButton"
-                                                class="fas fa-heart" style="font-size: 25px;"></i>
-                                                <span
-                                                 id="numberOfLikes{{ project.id }}" style="color: #f1f1f1;">{{ project.likes }}</span></a>
-
-                                     {% endif %}
-                                         </div>
-                                         
-                                        </div>
-                                    
-                                 
-                                        <div>
-                                         <button onclick="showDetails('{{ project.id }}' ,'{{ project.title }}','{{ project.mainDescription }}','{{ project.videoLink }}','{{ project.pdfLink }}')"
-                                      class="btn detailsButton" style="background-color: chocolate;">Show Details
-                              </button>     
-
-                                        </div>
-                                       
-
-                                      </div>
-                                   
-                                  
-                                  </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-
-</div>
-
-  </div>
-      </div>          
 
     
 
@@ -940,31 +637,13 @@ Launch demo modal
                
     </div>
 
-    <div class="container mob2" style="text-decoration: none;color: white;position: absolute;top:20px;left: 85vw;z-index: 999;">
-        {% if user.is_authenticated %}
-        <div style="text-align: center;margin-bottom: 2%;display: flex;padding: 10px;">
-            <a  style="text-decoration: none;">
-                <h3 >Welcome!! {{ user.username }}</h3> 
-            </a>
-            <a href="{% url 'logout' %}" style="text-decoration: none;padding-left: 10px;">
-                <h3   > Log Out
-                </h3>
-            </a>
-        </div>
-   
-    {% else %}
-    <div style="text-align: center;margin-bottom: 2%;display: flex;padding-left: 30px;padding-top: 10px;">
-        <a href="{% url 'signup' %}" style="text-decoration: none;">
-            <h3   > Sign Up 
+    <div class="container mob2" style="text-decoration: none;color: white;position: absolute;top:20px;left: 80vw;z-index: 999;">
+
+        <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 0px;color: white;">
+            <h3> Already have an account? Login
             </h3>
         </a>
-        <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 10px;">
-            <h3   > Log In
-            </h3>
-        </a>
-    </div>
-       
-    {% endif %}
+        
     </div>
 
 
@@ -1121,114 +800,7 @@ Launch demo modal
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-        <script>
-            function getCookie(name) {
-                let cookieValue = null;
-                if (document.cookie && document.cookie !== '') {
-                    const cookies = document.cookie.split(';');
-                    for (let i = 0; i < cookies.length; i++) {
-                        const cookie = cookies[i].trim();
-                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
-        
-            const csrftoken = getCookie('csrftoken');
-        
-            var scoreProj;
-            const showDetails = (prjID, prjTitle, prjDesc, prjVideo, prjPdf) => {
-                console.log("Show Details", prjID, prjTitle, prjDesc, prjVideo);
-                scoreProj = prjID;
-                document.getElementById("exampleModalLabel").innerText = prjTitle;
-                document.getElementById("modalPrjVideo").setAttribute("src", prjVideo);
-                document.getElementById("modalPrjPdf").setAttribute("src", prjPdf);
-                document.getElementById("modalPrjDesc").innerText = prjDesc;
-                document.getElementById("pdfDownloadAnchor").setAttribute("href", prjPdf);
-                document.getElementById("launchModal").click();
-            };
-            let b = document.querySelector('button');
-            setTimeout(() => b.focus(), 100);
-            setTimeout(() => b.blur(), 1000);
-        
-            const likePressed = async (prjID, noOfLikes) => {
-                var likeNumberID = "numberOfLikes" + prjID;
-                var requestOptions = {
-                    'method': 'POST',
-                    'headers': new Headers({
-                        'X-CSRFToken': csrftoken,
-                        'Content-Type': 'application/json',
-                    }),
-                    mode: 'same-origin',
-                    body: JSON.stringify({
-                        'prjID': prjID,
-                    })
-                };
-                await fetch("/like", requestOptions)
-                    .then(response => response.text())
-                    .then(result => {
-                        result = JSON.parse(result);
-                        var likes = parseInt(noOfLikes);
-                        if (result.isLiked && result.isSuccess) {
-                            likes = likes + 1;
-                            document.getElementById(likeNumberID).innerHTML = likes;
-                        } else if (!result.isLiked && result.isSuccess) {
-                            likes = likes - 1;
-                            if (likes < 0)
-                                likes = 0;
-                            document.getElementById(likeNumberID).innerHTML = likes;
-                        }
-                    })
-                    .catch(error => console.error('error', error));
-        
-            };
-        
-            {% if user.is_judge %}
-                const giveScores = () => {
-                    $('#exampleModal').modal('toggle');
-                    document.getElementById("inputPrjID").value = scoreProj;
-                    document.getElementById("launchModal2").click();
-        
-                };
-                $('#exampleModal2').on('hidden.bs.modal', function () {
-                    $('#exampleModal').modal('toggle');
-                    document.getElementById("scoreSubmitSuccessMsg").style.display = 'none';
-                    document.getElementById("scoreAlreadySubmittedMsg").style.display = 'none';
-                });
-        
-                const markProjectScores = async () => {
-                    var score = document.getElementById('inputScore').value;
-                    console.log("#####", score);
-                    var requestOptions = {
-                        'method': 'POST',
-                        'headers': new Headers({
-                            'X-CSRFToken': csrftoken,
-                            'Content-Type': 'application/json',
-                        }),
-                        mode: 'same-origin',
-                        body: JSON.stringify({
-                            'score': score,
-                            'prjID': scoreProj,
-                        })
-                    };
-                    await fetch("/score", requestOptions)
-                        .then(response => response.text())
-                        .then(result => {
-                            result = JSON.parse(result);
-                            if (result.isSuccess && !result.alreadySubmitted) {
-                                document.getElementById("scoreSubmitSuccessMsg").style.display = 'block';
-                            }
-                            if (result.alreadySubmitted) {
-                                document.getElementById("scoreAlreadySubmittedMsg").style.display = 'block';
-                            }
-                        })
-                        .catch(error => console.error('error', error));
-                };
-            {% endif %}
-        </script>
+     
 <script>
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
   window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;

@@ -36,12 +36,12 @@ def logIn(request):
                 return redirect('home')
             else:
                 messages.info(request, "The username and password didn't match. Please try again.")
-                return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
+                return render(request, 'techmelaApp/login3.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
         else:
             messages.info(request, "Could not login. Please try again.")
-            return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
+            return render(request, 'techmelaApp/login3.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
-    return render(request, 'techmelaApp/login2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
+    return render(request, 'techmelaApp/login3.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
 
 def signup(request):
@@ -65,7 +65,7 @@ def signup(request):
         if result['success']:
             if CustomUser.objects.filter(username=username).exists():
                 messages.info(request, 'Username already in use.')
-                return render(request, 'techmelaApp/signup2.html', {})
+                return render(request, 'techmelaApp/signup3.html', {})
             if password == password2 :
                 user = CustomUser(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
                 user.set_password(password)
@@ -76,7 +76,7 @@ def signup(request):
             return redirect('signup')
         return redirect('signup')
 
-    return render(request, 'techmelaApp/signup2.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
+    return render(request, 'techmelaApp/signup3.html', {'recaptcha_site_key':settings.GOOGLE_RECAPTCHA_SITE_KEY})
 
 
 def logOut(request):
