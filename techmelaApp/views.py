@@ -71,7 +71,7 @@ def signup(request):
                 user.set_password(password)
 
                 user.save()
-                return redirect('logIn')
+                return redirect('login')
 
             return redirect('signup')
         return redirect('signup')
