@@ -523,7 +523,7 @@ Launch demo modal
 <div class="modal fade modal-fullscreen-sm-down" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
  aria-hidden="true">
 <div class="modal-dialog modal-xl" ">
-    <div class="modal-content" style="background-color: #020409;color: #f1f1f1;">
+    <div class="modal-content" style="background-color: #020409;color: #f1f1f1;height: 100vh;padding: 10px;">
         <div class="modal-header">
             <h5 class="modal-title container-fluid modalPrjTitle" id="exampleModalLabel"
                 style="text-align: center;font-weight: bold; font-size: 20px;">Project title</h5>
@@ -532,7 +532,7 @@ Launch demo modal
         <div class="modal-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-12  text-center">
                         <!--  video-->
                         <div class="projectVideo">
                             <iframe id="modalPrjVideo" class="prjVideo" style="height: 30vh;"
@@ -543,8 +543,7 @@ Launch demo modal
                             </iframe>
                         </div>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
+                    <div class="col-12 text-center">
                         {% if user.is_judge %}
                             <a id="judgeModalAnchor" onclick="giveScores()"
                                style=" text-decoration: none; cursor: pointer;">
@@ -556,10 +555,10 @@ Launch demo modal
                             </a>
                         {% endif %}
                         <!--  desc-->
-                        <p id="modalPrjDesc">Project Description</p>
+                        <p id="modalPrjDesc" style="margin: 10px;">Project Description</p>
 
                         <a id="pdfDownloadAnchor" target="_blank" href="#" style=" text-decoration: none;">
-                            <div style=" margin-top: 2vh;">
+                            <div style=" margin-top: 2vh;margin-left: -20vw;">
                                 <i style="font-size: 2rem; color: red;" class="far fa-file-pdf"></i>
                                 <div style="display: inline; color: dodgerblue;margin-top: 10px; margin-left:10px;position: absolute;">
                                     Download full details of the project
@@ -664,8 +663,8 @@ Launch demo modal
 </div>
 {% endif %}
 
-    <div class="container2">
-        <div class="content">    
+    <div class="container2 ">
+        <div class="content">     
             
           
             <canvas id="universe" ></canvas>
@@ -673,9 +672,9 @@ Launch demo modal
       
 
         
-<div class="container-fluid mobile" style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100%;overflow-x: hidden;">
+<div class="container-fluid mobile " style="position:fixed;z-index: 999;top:0vh;overflow-y: scroll;height: 100vh;width: 100vw;overflow-x: hidden;">
       
-      <div class="mobile2" style="display: flex;
+      <div class="mobile2 text-center" style="display: flex;
       justify-content: center;">
             <div style="margin-left: 0vw;text-align: center;">
       <p class="line">
