@@ -434,55 +434,52 @@ Launch demo modal
     
 
   
-    <div class="mob">
-      <div
-      style="left__logo"
-      >
-
-      <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
-        <img class="icon1" style="height: 70px; width: 70px; position: absolute;left: 0;top: 10px;"
-                                     src="{% static 'techmelaApp/img/final-logo.png' %}" alt="aarohan-logo"/>
-      </a>
-      <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
-          <img class="icon2" style="height: 50px; width: 90px; position: absolute;left: 90px;top: 20px;"
-                                       src="{% static 'techmelaApp/img/digital_india8.png' %}" alt="aarohan-logo"/>
-        </a>
-
-                         <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
-                          <img class="icon3" style="height: 40px; width: 130px; position: absolute;left: 190px ;top: 20px;" src="{% static 'techmelaApp/img/Full_White.png' %}" alt="lapkafe-logo" />
-                                </a>
-      </div>
-      <div class="right__container">
-          {% if user.is_authenticated %}
-          <div style="text-align: center;margin-bottom: 2%;display: flex;padding: 10px;">
-              <a  style="text-decoration: none;">
-                  <h3 >Welcome!! {{ user.username }}</h3> 
-              </a>
-              <a href="{% url 'logout' %}" style="text-decoration: none;padding-left: 10px;color: rgb(171, 211, 211);">
-                  <h3   > Log Out
-                  </h3>
-              </a>
-          </div>
+    <div class=" mob">
       
-      {% else %}
-      </div>        
+              
+                
+                        <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
+                          <img class="icon1" style="height: 70px; width: 70px; position: absolute;left: 0;top: 10px;"
+                                                       src="{% static 'techmelaApp/img/final-logo.png' %}" alt="aarohan-logo"/>
+                        </a>
+                        <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
+                            <img class="icon2" style="height: 50px; width: 90px; position: absolute;left: 90px;top: 20px;"
+                                                         src="{% static 'techmelaApp/img/digital_india8.png' %}" alt="aarohan-logo"/>
+                          </a>
+                 
+                                           <a href="/" style="text-decoration: none;color: white;position: absolute;top:0px;">
+                                            <img class="icon3" style="height: 40px; width: 130px; position: absolute;left: 190px ;top: 20px;" src="{% static 'techmelaApp/img/Full_White.png' %}" alt="lapkafe-logo" />
+                                                  </a>
+                   
                
-      <div style="text-align: center;margin-bottom: 2%;display: flex;padding-left: 40px;padding-top: 10px;">
-          <a href="{% url 'signup' %}" style="text-decoration: none;color: rgb(171, 211, 211);">
-              <h3 style="margin-right:2vw;"  > Sign Up 
-              </h3>
-          </a>
-          <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 10px;color: aqua;">
-              <h3   > Log In
-              </h3>
-          </a>
-      </div>
-      {% endif %}
-      </div> 
     </div>
 
-    {% comment %} <div class="container mob2" style="text-decoration: none;color: white;position: absolute;top:20px;z-index: 999;">
+    <div class="container mob2" style="text-decoration: none;color: white;position: absolute;top:20px;left: 85vw;z-index: 999;">
+        {% if user.is_authenticated %}
+        <div style="text-align: center;margin-bottom: 2%;display: flex;padding: 10px;">
+            <a  style="text-decoration: none;">
+                <h3 >Welcome!! {{ user.username }}</h3> 
+            </a>
+            <a href="{% url 'logout' %}" style="text-decoration: none;padding-left: 10px;color: rgb(171, 211, 211);">
+                <h3   > Log Out
+                </h3>
+            </a>
+        </div>
+   
+    {% else %}
+    <div style="text-align: center;margin-bottom: 2%;display: flex;padding-left: 40px;padding-top: 10px;">
+        <a href="{% url 'signup' %}" style="text-decoration: none;color: rgb(171, 211, 211);">
+            <h3 style="margin-right:2vw;"  > Sign Up 
+            </h3>
+        </a>
+        <a href="{% url 'login' %}" style="text-decoration: none;padding-left: 10px;color: aqua;">
+            <h3   > Log In
+            </h3>
+        </a>
+    </div>
        
+    {% endif %}
+    </div>
 
 
 
