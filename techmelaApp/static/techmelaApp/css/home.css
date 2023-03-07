@@ -1,0 +1,485 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+    html,
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+body {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-filter: contrast(120%);
+    filter: contrast(120%);
+    background-color: black;
+}
+  
+
+
+
+
+
+
+
+
+
+.container2 {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(1600px at 70% 120%, rgba(33, 39, 80, 1) 10%, #020409 100%);
+
+}
+
+
+
+#universe {
+    width: 100%;
+    height: 100%;
+}
+
+#footerContent {
+    font-family: sans-serif;
+    font-size: 110%;
+    color: rgba(200, 220, 255, .3);
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    padding: 20px;
+    text-align: center;
+    z-index: 20;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0px;
+    height: 300px;
+    width: 100%;
+}
+
+#scene {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -800px;
+}
+
+
+
+/*-----------------------------音乐-------------------------------------*/
+
+.play {
+    animation: rotate 1.2s linear infinite;
+    -webkit-animation: rotate 1.2s linear infinite
+}
+
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0)
+    }
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+
+/*box*/
+
+#box {
+    color: #fff;
+    position: absolute;
+    bottom: 30%;
+    left: 50%;
+    margin-left: -96px;
+    z-index: 100;
+    transform: rotate(-12deg);
+    -webkit-transform: rotate(-12deg);
+    font-size: 12px;
+}
+
+.txt {
+    color: hsla(0, 0%, 0%, 0);
+    text-shadow: #fff 0 0 10px;
+    transition: text-shadow 2s cubic-bezier(0, 1, 0, 1);
+}
+
+@-moz-document url-prefix() {
+    .txt {
+        text-shadow: #fff 0 0 20px;
+    }
+}
+
+
+/* FF fix */
+
+.fadeInUp {
+    -webkit-animation: fadeInUp 3s .2s ease both;
+    -moz-animation: fadeInUp 3s .2s ease both;
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(100px)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0)
+    }
+}
+
+@-moz-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -moz-transform: translateY(100px)
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: translateY(0)
+    }
+}
+
+
+#canvas{
+
+    margin:auto;
+}
+
+.nav-item > .active {
+    background-color: #F7413E !important;
+}
+
+.detailsButton {
+    z-index: 99999999;
+}
+
+.prjVideo {
+    width: 35vw;
+    height: 40vh;
+}
+
+.sectionHeading {
+    font-size: 3rem;
+    font-family: "Roboto";
+    margin-top: 3%;
+    margin-bottom: 4%;
+    color: white;
+}
+
+.mainHeading {
+    font-size: 4rem;
+    font-family: "Roboto";
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+.techmelaTitleImg {
+    width: 20vw;
+    height: auto;
+    margin-left: 0;
+}
+
+.mainSubheading {
+    font-size: 2rem;
+    margin-bottom: 2%;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    font-family: "Roboto";
+    color: black;
+    background-color:chocolate !important;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#pills-tab {
+    margin-left: 26vw;
+}
+
+.footerInfo {
+    color: white;
+    text-align: center;
+    padding-bottom: 1%;
+    padding-top: 5%;
+    font-size: 25px;
+}
+
+.footerWdctLogo {
+    height: 70px;
+    width: 70px;
+    float: right;
+    margin-right: 1vw;
+}
+
+.footerWdctText {
+    font-size: 13px;
+}
+
+#likeButton {
+    color: red;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+#likeButton:hover {
+    transform: scale(1.5);
+}
+
+@media only screen and (max-width: 600px) {
+    .prjVideo {
+        width: 80vw;
+        height: auto;
+        margin-bottom: 10%;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        margin-top: 1vh;
+    }
+
+    #pills-tab {
+        margin-left: unset;
+    }
+
+    .mainSubheading {
+        font-size: 1rem;
+    }
+
+    .techmelaTitleImg {
+        width: 60vw;
+        height: auto;
+        margin-left: unset;
+    }
+
+    .sectionHeading {
+        font-size: 2rem;
+    }
+
+    .footerWdctLogo {
+        height: 50px;
+        width: 50px;
+    }
+
+    .footerWdctText {
+        font-size: 10px;
+    }
+    .line{
+        left: -45vw!important;
+    }
+    .line .head4 {
+        font: 500 1em  'Courier New', Courier, monospace!important;
+font-size: 60px!important;
+margin-top: 5vh!important;
+margin-left: 15vw!important;
+   left:auto!important;
+      right: auto!important;
+      -webkit-text-fill-color:chocolate!important;
+
+
+}
+.mob2{
+  
+    margin-top: 23vh!important;
+    margin-left: 3vw!important;
+}
+.headingae{
+    opacity: 1;
+    color: white;
+    margin-bottom: 0!important;
+    margin-left: 0vw!important;
+    padding: 0;
+    margin-top: 20vh!important;
+}
+    .nav{
+        left: 0!important;
+        margin-top: -5vh!important;
+        margin-left: 30px!important;
+    }
+    .zone{
+        margin-top:0vh!important;
+        padding-left: 5vw!important;
+    }
+    .mob2{
+      position: absolute;
+      left:auto!important;
+      right: auto!important;
+      top: 1vh !important;
+    }
+   .mobile{
+    padding-left: 10vw!important;
+
+   }
+   .mobile2{
+    margin-top: 10vh;
+    margin-left: -10vh;
+   }
+   .contbox{
+    padding-left: 10vw!important;
+
+   }
+   .icon1{
+       left: 10vw!important;
+       right:auto!important;
+       margin: 0 !important;
+       margin-top: 0vh!important;
+       padding: 0!important;
+   }
+  .icon2{
+       left: 30vw!important;
+       right:auto!important;
+       margin: 0 !important;
+       margin-top: 0vh!important;
+       padding: 0!important;
+   }
+   .icon3{
+       left: 60vw!important;
+       right:auto!important;
+       margin: 0 !important;
+       margin-top: 1vh!important;
+       padding: 0!important;
+       width: 70px!important;
+       height: 25px!important;
+   }
+   .mob{
+       margin-left: -10vw;
+   }
+}
+
+@media only screen and (max-width: 800px) {
+    #pills-tab {
+        margin-left: unset;
+    }
+}
+
+
+:root {
+    --d: 700ms;
+    --e: cubic-bezier(0.19, 1, 0.22, 1);
+    --font-sans: "Roboto";
+    --font-serif: "Roboto";
+}
+
+
+
+.page-content {
+    display: grid;
+    grid-gap: 1rem;
+    padding: 1rem;
+    max-width: 1024px;
+    margin-left: -2%;
+    font-family: var(--font-sans);
+}
+
+@media (min-width: 600px) {
+    .page-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 800px) {
+    .page-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+ /* width */        
+ ::-webkit-scrollbar {
+            width: 0px;
+        }
+  
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background:transparent;
+        }
+  
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background:transparent
+        }
+  
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: transparent
+        }
+          
+        .scroll {
+            display: block;
+            border: 0px solid red;
+            margin-left: 5vw;
+            padding: 5px;
+            margin-top: 5px;
+            width: 100%;
+            height: 300px;
+            overflow-y: scroll;
+           
+        }
+
+.line {
+	 text-transform: uppercase;
+	 letter-spacing: 0.5em;
+	 display: inline-block;
+	 border-width: 4px 0;
+	 padding: 1.5em 0em;
+	 position: absolute;
+     
+	 top: 0vh;
+	 left: 28vw;
+	 width: 40em;
+
+}
+ .line .head4 {
+	 font: 700 4em  'Courier New', Courier, monospace;
+	 letter-spacing: 0;
+     color: #f1f1f1;
+	 padding: 0.25em 0 0.325em;
+	 display: block;
+	 margin: 0 auto;
+	 text-shadow: 0 0 80px rgba(255, 255, 255, .5);
+	/* Clip Background Image */
+	 background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+	 -webkit-background-clip: text;
+	 background-clip: text;
+	/* Animate Background Image */
+	 -webkit-text-fill-color: transparent;
+	 -webkit-animation: aitf 80s linear infinite;
+	/* Activate hardware acceleration for smoother animations */
+	 -webkit-transform: translate3d(0, 0, 0);
+	 -webkit-backface-visibility: hidden;
+}
+/* Animate Background Image */
+ @-webkit-keyframes aitf {
+	 0% {
+		 background-position: 0% 50%;
+	}
+	 100% {
+		 background-position: 100% 50%;
+	}
+}
+ 
+
